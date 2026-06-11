@@ -15,95 +15,56 @@
             --warning: #f59e0b; --warning-light: #fbbf24; --warning-dark: #d97706;
             --danger: #ef4444; --danger-light: #f87171; --danger-dark: #dc2626;
             --info: #06b6d4; --info-dark: #0891b2;
-            --white: #ffffff; --dark: #1e293b; --dark-2: #334155; --dark-3: #475569;
-            --gray: #64748b; --gray-light: #f1f5f9; --gray-light-3: #94a3b8;
-            --border: #e2e8f0; --border-light: #f1f5f9;
+            --white: #ffffff; --dark: #1f2937; --dark-2: #374151; --dark-3: #4b5563;
+            --gray: #6b7280; --gray-light: #f3f4f6; --gray-light-3: #9ca3af;
+            --border: #e5e7eb; --border-light: #f3f4f6;
             --radius: 12px; --radius-sm: 8px; --radius-lg: 16px; --radius-xl: 20px;
             --shadow: 0 1px 3px rgba(0,0,0,0.08); --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 6px rgba(0,0,0,0.07); --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
             --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
             --transition: all 0.2s ease; --transition-fast: all 0.15s ease;
+            --primary-glow: rgba(37,99,235,0.2); --success-glow: rgba(16,185,129,0.2);
+            --warning-glow: rgba(245,158,11,0.2); --danger-glow: rgba(239,68,68,0.2);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif; background: #f8fafc; color: var(--dark);
-            min-height: 100vh; line-height: 1.5;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); color: var(--dark); min-height: 100vh; padding: 20px; }
         
-        /* Watermarks */
         body::before {
-            content: 'DEMO VERSION - Not for Production Use';
-            position: fixed; top: 50%; left: 50%;
-            transform: translate(-50%, -50%) rotate(-35deg);
-            font-size: 4vw; color: rgba(239, 68, 68, 0.1);
-            white-space: nowrap; pointer-events: none; z-index: 9998;
-            font-weight: 900; user-select: none; letter-spacing: 6px;
+            content: 'DEMO VERSION - 5 Machines / 10 Shifts Max';
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(-35deg);
+            font-size: 3.5vw; color: rgba(239,68,68,0.08); white-space: nowrap;
+            pointer-events: none; z-index: 9998; font-weight: 900; user-select: none; letter-spacing: 4px;
         }
         body::after {
-            content: 'Upgrade at digitalyar.company';
-            position: fixed; top: 20%; left: 10%; transform: rotate(20deg);
-            font-size: 2.5vw; color: rgba(37, 99, 235, 0.07);
-            white-space: nowrap; pointer-events: none; z-index: 9997;
-            font-weight: 700; user-select: none;
+            content: 'Upgrade at digitalyar.company'; position: fixed; top: 20%; left: 10%; transform: rotate(20deg);
+            font-size: 2.5vw; color: rgba(37,99,235,0.06); white-space: nowrap;
+            pointer-events: none; z-index: 9997; font-weight: 700; user-select: none;
         }
+        .pro-badge { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; font-size: 0.55rem; padding: 2px 6px; border-radius: 6px; font-weight: 700; text-transform: uppercase; margin-left: 4px; }
+        .btn-pro { background: linear-gradient(135deg, #f59e0b, #d97706) !important; color: white !important; opacity: 0.7; cursor: not-allowed !important; }
+        .upgrade-banner { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid var(--warning); padding: 10px 20px; border-radius: var(--radius); text-align: center; font-weight: 600; font-size: 0.85rem; margin-bottom: 20px; }
+        .upgrade-banner a { color: var(--primary-dark); font-weight: 700; }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        header { background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 50%, #1a1a3e 100%); border-radius: var(--radius-xl); padding: 24px 28px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: var(--shadow-xl); position: relative; overflow: hidden; }
+        .logo { display: flex; align-items: center; gap: 14px; position: relative; z-index: 1; }
+        .logo-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; }
+        .logo-text h1 { font-size: 1.5rem; font-weight: 800; color: var(--white); }
+        .logo-text h1 .demo-badge { background: var(--warning); color: white; font-size: 0.6rem; padding: 2px 8px; border-radius: 10px; vertical-align: middle; margin-left: 6px; }
+        .header-stats { display: flex; gap: 12px; position: relative; z-index: 1; }
+        .header-stat { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 12px 20px; text-align: center; min-width: 100px; }
+        .header-stat-value { font-size: 1.3rem; font-weight: 700; color: var(--white); }
+        .header-stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.55); text-transform: uppercase; }
         
-        .upgrade-banner {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            border: 2px solid var(--warning); border-radius: var(--radius);
-            padding: 14px 24px; margin-bottom: 20px; text-align: center;
-            font-weight: 600; font-size: 0.9rem;
-        }
-        .upgrade-banner a {
-            color: var(--primary-dark); font-weight: 700; text-decoration: underline;
-        }
-
-        header {
-            background: var(--white); border-radius: var(--radius-lg);
-            padding: 24px 28px; margin-bottom: 24px;
-            display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 16px;
-            border: 1px solid var(--border); box-shadow: var(--shadow);
-        }
-        .logo { display: flex; align-items: center; gap: 14px; }
-        .logo-icon {
-            width: 52px; height: 52px; background: linear-gradient(135deg, var(--primary), var(--info));
-            border-radius: 14px; display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1.5rem;
-        }
-        .logo-text h1 { font-size: 1.5rem; font-weight: 800; color: var(--dark); }
-        .logo-text h1 .demo-badge {
-            background: var(--warning); color: white; font-size: 0.65rem;
-            padding: 2px 8px; border-radius: 12px; vertical-align: middle; margin-left: 6px;
-        }
-        .logo-text p { color: var(--gray); font-size: 0.85rem; }
-        .header-stats { display: flex; gap: 16px; flex-wrap: wrap; }
-        .header-stat {
-            text-align: center; padding: 12px 20px; background: var(--gray-light);
-            border-radius: var(--radius-sm); min-width: 100px;
-        }
-        .header-stat-value { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
-        .header-stat-label { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; }
-
-        .stats-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px; margin-bottom: 24px;
-        }
-        .stat-card {
-            background: var(--white); border-radius: var(--radius-lg); padding: 20px;
-            border: 1px solid var(--border); box-shadow: var(--shadow);
-            position: relative; overflow: hidden;
-        }
-        .stat-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .stat-card { background: var(--white); border-radius: var(--radius-lg); padding: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+        .stat-card::before { content: ''; display: block; height: 4px; border-radius: 4px 4px 0 0; margin: -20px -20px 12px -20px; }
         .stat-card.availability::before { background: var(--primary); }
         .stat-card.performance::before { background: var(--secondary); }
         .stat-card.quality::before { background: var(--success); }
         .stat-card.oee::before { background: var(--warning); }
         .stat-title { font-size: 0.8rem; font-weight: 600; color: var(--gray); text-transform: uppercase; }
-        .stat-value { font-size: 1.8rem; font-weight: 800; margin-top: 4px; }
+        .stat-value { font-size: 1.8rem; font-weight: 800; }
         .stat-card.availability .stat-value { color: var(--primary); }
         .stat-card.performance .stat-value { color: var(--secondary); }
         .stat-card.quality .stat-value { color: var(--success); }
@@ -111,149 +72,83 @@
 
         .main-content { display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; }
         @media (max-width: 1100px) { .main-content { grid-template-columns: 1fr; } }
-
-        .dashboard-card {
-            background: var(--white); border-radius: var(--radius-xl);
-            border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden;
-        }
+        .dashboard-card { background: var(--white); border-radius: var(--radius-xl); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; }
         .card-header { padding: 20px 24px 0; }
-        .card-title { font-size: 1.2rem; font-weight: 700; color: var(--dark); }
-
-        .tabs {
-            display: flex; gap: 4px; padding: 16px 24px 0; overflow-x: auto;
-            border-bottom: 2px solid var(--border-light); scrollbar-width: none;
-        }
-        .tabs::-webkit-scrollbar { display: none; }
-        .tab {
-            padding: 10px 16px; font-size: 0.82rem; font-weight: 600; color: var(--gray);
-            cursor: pointer; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-            transition: var(--transition); white-space: nowrap; user-select: none;
-        }
-        .tab:hover { color: var(--primary); background: rgba(37, 99, 235, 0.05); }
-        .tab.active { color: var(--primary); background: rgba(37, 99, 235, 0.08); }
+        .card-title { font-size: 1.1rem; font-weight: 700; }
+        .tabs { display: flex; gap: 4px; padding: 16px 24px 0; overflow-x: auto; border-bottom: 2px solid var(--border-light); }
+        .tab { padding: 10px 16px; font-size: 0.8rem; font-weight: 600; color: var(--gray); cursor: pointer; border-radius: var(--radius-sm) var(--radius-sm) 0 0; white-space: nowrap; transition: var(--transition); }
+        .tab:hover { color: var(--primary); background: rgba(37,99,235,0.05); }
+        .tab.active { color: var(--primary); background: rgba(37,99,235,0.08); }
         .tab-content { display: none; padding: 24px; animation: fadeIn 0.3s ease; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 14px; }
+        .form-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-bottom: 14px; }
         @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
-        .form-group { display: flex; flex-direction: column; gap: 4px; }
-        .form-label { font-size: 0.8rem; font-weight: 600; color: var(--dark-3); }
-        .form-input, .form-select, .form-textarea {
-            width: 100%; padding: 10px 12px; font-size: 0.88rem; font-family: 'Inter', sans-serif;
-            color: var(--dark); background: var(--white); border: 1.5px solid var(--border);
-            border-radius: var(--radius-sm); transition: var(--transition); outline: none;
-        }
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-        .form-select { cursor: pointer; }
-
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-            padding: 10px 18px; font-size: 0.85rem; font-weight: 600; font-family: 'Inter', sans-serif;
-            border: none; border-radius: var(--radius-sm); cursor: pointer; transition: var(--transition);
-            white-space: nowrap; user-select: none;
-        }
-        .btn:active { transform: scale(0.97); }
+        .form-group { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+        .form-label { font-size: 0.8rem; font-weight: 600; }
+        .form-input, .form-select, .form-textarea { padding: 10px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.9rem; font-family: 'Inter', sans-serif; transition: var(--transition); outline: none; background: var(--white); color: var(--dark); }
+        .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); }
+        .btn { padding: 10px 18px; border: none; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
         .btn-primary { background: var(--primary); color: white; }
         .btn-primary:hover { background: var(--primary-dark); }
         .btn-success { background: var(--success); color: white; }
-        .btn-success:hover { background: var(--success-dark); }
         .btn-warning { background: var(--warning); color: white; }
         .btn-danger { background: var(--danger); color: white; }
         .btn-info { background: var(--info); color: white; }
-        .btn-sm { padding: 6px 12px; font-size: 0.78rem; }
-        .btn-xs { padding: 4px 8px; font-size: 0.7rem; }
-        .btn-pro {
-            background: linear-gradient(135deg, #f59e0b, #d97706); color: white;
-            opacity: 0.7; cursor: not-allowed;
-        }
-        .pro-badge {
-            background: rgba(255,255,255,0.3); font-size: 0.6rem; padding: 2px 6px;
-            border-radius: 8px; font-weight: 700; text-transform: uppercase;
-        }
+        .btn-sm { padding: 6px 12px; font-size: 0.75rem; }
+        .btn-xs { padding: 3px 8px; font-size: 0.65rem; }
 
-        .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-light); }
-
-        .table-container { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
         table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        thead { background: var(--dark); }
-        thead th { padding: 12px 16px; text-align: left; font-weight: 600; color: white; font-size: 0.78rem; text-transform: uppercase; white-space: nowrap; }
-        tbody tr { border-bottom: 1px solid var(--border-light); transition: var(--transition-fast); }
-        tbody tr:hover { background: var(--gray-light); }
-        tbody td { padding: 11px 16px; color: var(--dark-3); font-weight: 500; }
+        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--gray-light); font-weight: 700; color: var(--gray); font-size: 0.78rem; text-transform: uppercase; }
+        tr:hover { background: var(--gray-light); }
+        .table-container { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
 
-        .status-badge { display: inline-flex; padding: 4px 10px; font-size: 0.72rem; font-weight: 600; border-radius: 20px; }
-        .status-excellent { background: rgba(16,185,129,0.12); color: var(--success-dark); }
-        .status-good { background: rgba(37,99,235,0.12); color: var(--primary-dark); }
-        .status-average { background: rgba(245,158,11,0.12); color: var(--warning-dark); }
-        .status-poor { background: rgba(239,68,68,0.12); color: var(--danger-dark); }
+        .sidebar { display: flex; flex-direction: column; gap: 16px; }
+        @media (max-width: 1100px) { .sidebar { display: none; } }
+        .sidebar-card { background: var(--white); border-radius: var(--radius-lg); padding: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+        .sidebar-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; }
 
-        .oee-result {
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe, #f0fdf4);
-            border: 1px solid rgba(37,99,235,0.15); border-radius: var(--radius-lg);
-            padding: 24px; margin-bottom: 24px; text-align: center;
-        }
+        .oee-result { background: linear-gradient(135deg, #f0f9ff, #e0f2fe, #f0fdf4); border: 1px solid rgba(37,99,235,0.15); border-radius: var(--radius-lg); padding: 24px; text-align: center; margin-bottom: 24px; }
         .oee-score { font-size: 3rem; font-weight: 800; }
         .oee-score.excellent { color: var(--success); }
         .oee-score.good { color: var(--primary); }
         .oee-score.average { color: var(--warning); }
         .oee-score.poor { color: var(--danger); }
-        .oee-description { font-size: 0.9rem; color: var(--gray); margin-bottom: 20px; }
         .oee-breakdown { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 16px; }
-        .breakdown-item {
-            background: var(--white); border-radius: var(--radius); padding: 16px;
-            border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);
-        }
+        .breakdown-item { background: var(--white); border-radius: var(--radius); padding: 16px; border: 1px solid var(--border-light); }
         .breakdown-title { font-size: 0.75rem; font-weight: 600; color: var(--gray); text-transform: uppercase; }
-        .breakdown-value { font-size: 1.5rem; font-weight: 800; }
+        .breakdown-value { font-size: 1.4rem; font-weight: 800; }
 
         .chart-container { position: relative; height: 280px; background: var(--white); border-radius: var(--radius); padding: 12px; border: 1px solid var(--border-light); }
+        .status-badge { display: inline-flex; padding: 4px 10px; font-size: 0.7rem; font-weight: 600; border-radius: 16px; }
+        .status-excellent { background: rgba(16,185,129,0.12); color: var(--success-dark); }
+        .status-good { background: rgba(37,99,235,0.12); color: var(--primary-dark); }
+        .status-average { background: rgba(245,158,11,0.12); color: var(--warning-dark); }
+        .status-poor { background: rgba(239,68,68,0.12); color: var(--danger-dark); }
 
-        .sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 24px; }
-        @media (max-width: 1100px) { .sidebar { position: static; } }
-        .sidebar-card {
-            background: var(--white); border-radius: var(--radius-lg); padding: 20px;
-            border: 1px solid var(--border); box-shadow: var(--shadow);
-        }
-        .sidebar-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; }
+        .modal { display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; padding: 20px; background: rgba(15,23,42,0.6); backdrop-filter: blur(6px); }
+        .modal-content { background: var(--white); border-radius: var(--radius-xl); width: 100%; max-width: 500px; max-height: 85vh; overflow-y: auto; box-shadow: var(--shadow-xl); padding: 24px; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light); }
+        .modal-title { font-size: 1.1rem; font-weight: 700; }
+        .close-modal { background: var(--gray-light); border: none; font-size: 1.2rem; cursor: pointer; color: var(--gray); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-        .notification {
-            position: fixed; top: 24px; right: 24px; z-index: 2000;
-            display: flex; align-items: center; gap: 10px; padding: 14px 20px;
-            background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-xl);
-            border-left: 4px solid var(--primary); transform: translateX(calc(100% + 24px));
-            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); max-width: 380px;
-        }
-        .notification.show { transform: translateX(0); }
-        .notification.success { border-left-color: var(--success); }
-        .notification.warning { border-left-color: var(--warning); }
-        .notification.error { border-left-color: var(--danger); }
+        .notification { position: fixed; bottom: 20px; right: 20px; padding: 14px 22px; border-radius: var(--radius); color: white; font-weight: 600; box-shadow: var(--shadow-xl); z-index: 2000; display: flex; align-items: center; gap: 10px; transform: translateX(120%); opacity: 0; transition: all 0.4s; max-width: 350px; font-size: 0.9rem; }
+        .notification.show { transform: translateX(0); opacity: 1; }
+        .notification.success { background: var(--success); }
+        .notification.error { background: var(--danger); }
+        .notification.warning { background: var(--warning); }
 
-        .empty-state { text-align: center; padding: 32px; color: var(--gray); }
-        .empty-state i { font-size: 2.5rem; margin-bottom: 12px; color: var(--gray-light-3); }
-
-        .loss-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 14px; background: var(--gray-light); border-radius: var(--radius-sm);
-            border-left: 4px solid var(--primary); margin-bottom: 6px;
-        }
-        .loss-info h4 { font-size: 0.85rem; font-weight: 600; }
-        .loss-info p { font-size: 0.75rem; color: var(--gray); }
-        .loss-value { font-size: 1rem; font-weight: 700; }
-
-        .pagination-container { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 16px; padding: 12px; background: var(--gray-light); border-radius: var(--radius); flex-wrap: wrap; }
-        .pagination-btn { padding: 6px 12px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; cursor: pointer; }
-        .pagination-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-        .pagination-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .empty-state { text-align: center; padding: 40px; color: var(--gray); }
+        .loss-item { display: flex; justify-content: space-between; padding: 10px 14px; background: var(--gray-light); border-radius: var(--radius-sm); border-left: 4px solid var(--primary); margin-bottom: 6px; font-size: 0.85rem; }
+        .loss-item.urgent { border-left-color: var(--danger); }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Upgrade Banner -->
         <div class="upgrade-banner">
-            ⚠️ <strong>DEMO MODE:</strong> Limited to 5 machines, 10 shifts, 5 downtime events. Charts are view-only. 
+            ⚠️ <strong>DEMO MODE:</strong> 5 machines, 10 shifts max. Backup/PDF export disabled. Sample data pre-loaded.
             <a href="https://digitalyar.company/product/spa06-oee-master/" target="_blank">Upgrade to Full Version →</a>
         </div>
 
@@ -262,7 +157,7 @@
                 <div class="logo-icon"><i class="fas fa-industry"></i></div>
                 <div class="logo-text">
                     <h1>OEE Master <span class="demo-badge">DEMO</span></h1>
-                    <p>Overall Equipment Effectiveness Tracking System</p>
+                    <p style="color:rgba(255,255,255,0.6);font-size:0.8rem;">Overall Equipment Effectiveness Tracking</p>
                 </div>
             </div>
             <div class="header-stats">
@@ -272,21 +167,16 @@
             </div>
         </header>
 
-        <div class="stats-grid" id="statsGrid">
-            <div class="stat-card availability"><div class="stat-title">Availability</div><div class="stat-value" id="statAvailability">0%</div></div>
-            <div class="stat-card performance"><div class="stat-title">Performance</div><div class="stat-value" id="statPerformance">0%</div></div>
-            <div class="stat-card quality"><div class="stat-title">Quality</div><div class="stat-value" id="statQuality">0%</div></div>
-            <div class="stat-card oee"><div class="stat-title">Overall OEE</div><div class="stat-value" id="statOEE">0%</div></div>
-        </div>
+        <div class="stats-grid" id="statsGrid"></div>
 
         <div class="main-content">
             <div class="main-panel">
                 <div class="dashboard-card">
-                    <div class="card-header"><h2 class="card-title"><i class="fas fa-cogs"></i> OEE Management</h2></div>
                     <div class="tabs">
                         <div class="tab active" data-tab="calculator">Calculator</div>
                         <div class="tab" data-tab="machines">Machines</div>
                         <div class="tab" data-tab="shifts">Shift Log</div>
+                        <div class="tab" data-tab="losses">Loss Analysis</div>
                         <div class="tab" data-tab="reports">Reports</div>
                         <div class="tab" data-tab="backup">Sample Data</div>
                     </div>
@@ -295,82 +185,80 @@
                     <div class="tab-content active" id="calculator-tab">
                         <div class="oee-result" id="oeeResult" style="display:none;">
                             <div class="oee-score" id="oeeScore">0%</div>
-                            <div class="oee-description" id="oeeDescription">Your Overall Equipment Effectiveness</div>
+                            <p style="color:var(--gray);margin-bottom:16px;">Your Overall Equipment Effectiveness</p>
                             <div class="oee-breakdown">
                                 <div class="breakdown-item"><div class="breakdown-title">Availability</div><div class="breakdown-value" id="availabilityScore">0%</div></div>
                                 <div class="breakdown-item"><div class="breakdown-title">Performance</div><div class="breakdown-value" id="performanceScore">0%</div></div>
                                 <div class="breakdown-item"><div class="breakdown-title">Quality</div><div class="breakdown-value" id="qualityScore">0%</div></div>
                             </div>
                         </div>
-                        <form id="oeeForm">
+                        <form id="calcForm">
                             <div class="form-grid">
-                                <div class="form-group"><label class="form-label">Machine</label><select class="form-select" id="calc-machine"><option value="">Select...</option></select></div>
-                                <div class="form-group"><label class="form-label">Shift Type</label><select class="form-select" id="calc-shift"><option value="morning">Morning</option><option value="evening">Evening</option><option value="night">Night</option></select></div>
+                                <div class="form-group"><label class="form-label">Machine</label><select class="form-select" id="calcMachine"><option value="">Select...</option></select></div>
+                                <div class="form-group"><label class="form-label">Shift Type</label><select class="form-select" id="calcShift"><option value="morning">Morning</option><option value="evening">Evening</option><option value="night">Night</option></select></div>
+                                <div class="form-group"><label class="form-label">Total Shift Time (min)</label><input class="form-input" type="number" id="totalShiftTime" value="480" min="1"></div>
+                                <div class="form-group"><label class="form-label">Planned Downtime (min)</label><input class="form-input" type="number" id="plannedDowntime" value="60" min="0"></div>
+                                <div class="form-group"><label class="form-label">Unplanned Downtime (min)</label><input class="form-input" type="number" id="unplannedDowntime" value="30" min="0"></div>
+                                <div class="form-group"><label class="form-label">Total Produced (pcs)</label><input class="form-input" type="number" id="totalProduced" value="1000" min="0"></div>
+                                <div class="form-group"><label class="form-label">Defective Parts</label><input class="form-input" type="number" id="defectiveParts" value="50" min="0"></div>
+                                <div class="form-group"><label class="form-label">Ideal Cycle (sec)</label><input class="form-input" type="number" id="idealCycle" value="20" min="0.1" step="0.1"></div>
                             </div>
-                            <div class="form-grid">
-                                <div class="form-group"><label class="form-label">Total Shift Time (min)</label><input class="form-input" type="number" id="total-shift-time" value="480" min="1"></div>
-                                <div class="form-group"><label class="form-label">Planned Downtime (min)</label><input class="form-input" type="number" id="planned-downtime" value="60" min="0"></div>
-                                <div class="form-group"><label class="form-label">Unplanned Downtime (min)</label><input class="form-input" type="number" id="unplanned-downtime" value="30" min="0"></div>
-                                <div class="form-group"><label class="form-label">Reduced Speed Time (min)</label><input class="form-input" type="number" id="reduced-speed-time" value="15" min="0"></div>
-                                <div class="form-group"><label class="form-label">Total Parts Produced</label><input class="form-input" type="number" id="total-produced" value="1000" min="0"></div>
-                                <div class="form-group"><label class="form-label">Defective Parts</label><input class="form-input" type="number" id="defective-parts" value="50" min="0"></div>
-                                <div class="form-group"><label class="form-label">Ideal Cycle Time (sec)</label><input class="form-input" type="number" id="ideal-cycle-time" value="20" min="0.1" step="0.1"></div>
-                                <div class="form-group"><label class="form-label">Actual Cycle Time (sec)</label><input class="form-input" type="number" id="actual-cycle-time" value="25" min="0.1" step="0.1"></div>
-                            </div>
-                            <div class="actions">
-                                <button type="button" class="btn btn-primary" id="calculateBtn"><i class="fas fa-calculator"></i> Calculate OEE</button>
-                                <button type="button" class="btn btn-success" id="saveShiftBtn" style="display:none;"><i class="fas fa-save"></i> Save Result</button>
-                                <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> Clear</button>
-                            </div>
+                            <button type="button" class="btn btn-primary" onclick="calcOEE()"><i class="fas fa-calculator"></i> Calculate</button>
+                            <button type="button" class="btn btn-success" id="saveBtn" style="display:none;" onclick="saveResult()"><i class="fas fa-save"></i> Save</button>
                         </form>
                     </div>
 
                     <!-- Machines Tab -->
                     <div class="tab-content" id="machines-tab">
-                        <button class="btn btn-primary btn-sm" id="addMachineBtn" style="margin-bottom:16px;"><i class="fas fa-plus"></i> Add Machine</button>
-                        <p style="font-size:0.8rem;color:var(--warning);margin-bottom:12px;">⚠️ Demo limit: 5 machines max</p>
+                        <button class="btn btn-primary btn-sm" onclick="openMachineModal()" style="margin-bottom:12px;">+ Add Machine</button>
+                        <p style="font-size:0.75rem;color:var(--warning);">⚠️ Demo: 5 machines max</p>
                         <div id="machinesList"></div>
                     </div>
 
-                    <!-- Shift Log Tab -->
+                    <!-- Shift Log -->
                     <div class="tab-content" id="shifts-tab">
                         <form id="shiftForm">
                             <div class="form-grid">
-                                <div class="form-group"><label class="form-label">Machine</label><select class="form-select" id="shift-machine" required><option value="">Select...</option></select></div>
-                                <div class="form-group"><label class="form-label">Date</label><input class="form-input" type="date" id="shift-date" required></div>
-                                <div class="form-group"><label class="form-label">Shift Type</label><select class="form-select" id="shift-type"><option value="morning">Morning</option><option value="evening">Evening</option><option value="night">Night</option></select></div>
-                                <div class="form-group"><label class="form-label">Operator</label><input class="form-input" type="text" id="shift-operator" placeholder="Name"></div>
-                                <div class="form-group"><label class="form-label">Total Time (min)</label><input class="form-input" type="number" id="shift-total" value="480" min="1"></div>
-                                <div class="form-group"><label class="form-label">Downtime (min)</label><input class="form-input" type="number" id="shift-downtime" value="0" min="0"></div>
-                                <div class="form-group"><label class="form-label">Parts Produced</label><input class="form-input" type="number" id="shift-parts" value="0" min="0"></div>
-                                <div class="form-group"><label class="form-label">Defective Parts</label><input class="form-input" type="number" id="shift-defects" value="0" min="0"></div>
+                                <div class="form-group"><label class="form-label">Machine</label><select class="form-select" id="shiftMachine" required><option value="">Select...</option></select></div>
+                                <div class="form-group"><label class="form-label">Date</label><input class="form-input" type="date" id="shiftDate" required></div>
+                                <div class="form-group"><label class="form-label">Shift</label><select class="form-select" id="shiftType"><option value="morning">Morning</option><option value="evening">Evening</option><option value="night">Night</option></select></div>
+                                <div class="form-group"><label class="form-label">Total Time (min)</label><input class="form-input" type="number" id="sTotalTime" value="480" min="1"></div>
+                                <div class="form-group"><label class="form-label">Downtime (min)</label><input class="form-input" type="number" id="sDowntime" value="0" min="0"></div>
+                                <div class="form-group"><label class="form-label">Parts Produced</label><input class="form-input" type="number" id="sParts" value="0" min="0"></div>
+                                <div class="form-group"><label class="form-label">Defective Parts</label><input class="form-input" type="number" id="sDefects" value="0" min="0"></div>
                             </div>
-                            <p style="font-size:0.8rem;color:var(--warning);margin-bottom:12px;">⚠️ Demo limit: 10 shifts max</p>
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Shift</button>
+                            <p style="font-size:0.75rem;color:var(--warning);">⚠️ Demo: 10 shifts max</p>
+                            <button type="submit" class="btn btn-primary">Save Shift</button>
                         </form>
                     </div>
 
-                    <!-- Reports Tab -->
-                    <div class="tab-content" id="reports-tab">
-                        <div class="chart-container" style="margin-bottom:20px;"><canvas id="oeeTrendChart"></canvas></div>
-                        <div class="chart-container"><canvas id="oeeByMachineChart"></canvas></div>
-                        <p style="text-align:center;margin-top:12px;font-size:0.8rem;color:var(--gray);">
-                            📥 <strong>Pro Feature:</strong> Export reports to Excel, PNG, PDF. 
-                            <a href="https://digitalyar.company/product/spa06-oee-master/" target="_blank" style="color:var(--primary);">Upgrade →</a>
-                        </p>
+                    <!-- Loss Analysis -->
+                    <div class="tab-content" id="losses-tab">
+                        <div class="loss-analysis">
+                            <h4 style="margin-bottom:16px;">6 Major Losses</h4>
+                            <div style="margin-bottom:12px;"><span>Availability Losses:</span> <span id="aLoss">0%</span></div>
+                            <div style="margin-bottom:12px;"><span>Performance Losses:</span> <span id="pLoss">0%</span></div>
+                            <div><span>Quality Losses:</span> <span id="qLoss">0%</span></div>
+                        </div>
+                        <div class="chart-container" style="margin-top:20px;"><canvas id="lossChart"></canvas></div>
                     </div>
 
-                    <!-- Sample Data Tab -->
+                    <!-- Reports -->
+                    <div class="tab-content" id="reports-tab">
+                        <div class="chart-container" style="margin-bottom:16px;"><canvas id="oeeTrend"></canvas></div>
+                        <div class="chart-container"><canvas id="oeeByMachine"></canvas></div>
+                        <p style="text-align:center;margin-top:12px;font-size:0.8rem;color:var(--warning);">📥 PDF Export is a Pro feature. <a href="https://digitalyar.company/product/spa06-oee-master/" target="_blank" style="color:var(--primary);">Upgrade →</a></p>
+                    </div>
+
+                    <!-- Sample Data -->
                     <div class="tab-content" id="backup-tab">
-                        <h3 style="margin-bottom:12px;"><i class="fas fa-database"></i> Sample Data</h3>
-                        <p style="color:var(--gray);margin-bottom:16px;font-size:0.9rem;">Load demo data to explore the OEE system.</p>
-                        <button class="btn btn-primary" id="loadSampleBtn"><i class="fas fa-download"></i> Load Sample Data</button>
-                        <button class="btn btn-danger" id="clearSampleBtn" style="margin-left:8px;"><i class="fas fa-trash"></i> Clear All Data</button>
-                        <div id="sampleStatus" style="margin-top:12px;"></div>
-                        <p style="margin-top:16px;font-size:0.8rem;color:var(--gray);">
-                            📥 <strong>Pro Feature:</strong> Backup/Restore to JSON. 
-                            <a href="https://digitalyar.company/product/spa06-oee-master/" target="_blank" style="color:var(--primary);">Upgrade →</a>
-                        </p>
+                        <div class="card" style="border:1px solid var(--border);padding:20px;border-radius:var(--radius);">
+                            <h3 style="margin-bottom:12px;"><i class="fas fa-database"></i> Sample Data</h3>
+                            <p style="color:var(--gray);margin-bottom:14px;font-size:0.9rem;">Load demo data or clear all.</p>
+                            <button class="btn btn-primary btn-sm" onclick="loadSample()">📥 Load Sample Data</button>
+                            <button class="btn btn-danger btn-sm" onclick="clearAll()" style="margin-left:8px;">🗑️ Clear All</button>
+                            <p style="margin-top:14px;font-size:0.8rem;color:var(--warning);">📥 Backup/Restore is a Pro feature. <a href="https://digitalyar.company/product/spa06-oee-master/" target="_blank" style="color:var(--primary);">Upgrade →</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -378,306 +266,139 @@
             <div class="sidebar">
                 <div class="sidebar-card">
                     <h3><i class="fas fa-crown"></i> Upgrade to Pro</h3>
-                    <p style="font-size:0.85rem;color:var(--gray);margin-bottom:12px;">Unlock unlimited machines, shifts, export & backup.</p>
-                    <a href="https://digitalyar.company/product/spa06-oee-master/" target="_blank" class="btn btn-primary" style="width:100%;text-decoration:none;">
-                        <i class="fas fa-rocket"></i> Get Full Version
-                    </a>
+                    <p style="font-size:0.8rem;color:var(--gray);margin-bottom:10px;">Unlimited machines, shifts, PDF export & backup.</p>
+                    <a href="https://digitalyar.company/product/spa06-oee-master/" target="_blank" class="btn btn-primary btn-sm" style="width:100%;text-decoration:none;">Get Full Version</a>
                 </div>
                 <div class="sidebar-card">
                     <h3><i class="fas fa-chart-line"></i> Top OEE Today</h3>
-                    <div id="topOeeToday"><div class="empty-state"><p>No data</p></div></div>
+                    <div id="topOEE"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="notification" id="notification"><i class="fas fa-bell"></i><span id="notificationText"></span></div>
+    <div class="modal" id="machineModal">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title">Add Machine</h3><button class="close-modal" onclick="closeModal()">×</button></div>
+            <div class="form-grid"><div class="form-group"><label class="form-label">Code</label><input class="form-input" type="text" id="mCode" required></div><div class="form-group"><label class="form-label">Name</label><input class="form-input" type="text" id="mName" required></div><div class="form-group"><label class="form-label">Department</label><input class="form-input" type="text" id="mDept" value="production"></div><div class="form-group"><label class="form-label">Type</label><input class="form-input" type="text" id="mType" value="cnc"></div></div>
+            <button class="btn btn-primary" onclick="saveMachine()">Save</button>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"><i class="fas fa-bell"></i><span id="notifText"></span></div>
 
     <script>
-        const DEMO_LIMITS = { machines: 5, shifts: 10, downtimes: 5 };
-        const DB_NAME = 'OEEMasterDemo_v1';
-        let db;
-        let charts = {};
-
-        const request = indexedDB.open(DB_NAME, 1);
-        request.onupgradeneeded = (e) => {
-            const d = e.target.result;
-            if (!d.objectStoreNames.contains('machines')) d.createObjectStore('machines', { keyPath: 'id', autoIncrement: true });
-            if (!d.objectStoreNames.contains('shifts')) d.createObjectStore('shifts', { keyPath: 'id', autoIncrement: true });
-        };
-        request.onsuccess = (e) => { db = e.target.result; initApp(); };
-
-        function showNotification(msg, type = 'info') {
-            const n = document.getElementById('notification');
-            document.getElementById('notificationText').textContent = msg;
-            n.className = `notification ${type} show`;
-            setTimeout(() => n.classList.remove('show'), 3500);
+        const DB='OEEDemo_v2', DEMO={machines:5,shifts:10};
+        let db,charts={},calcResult=null;
+        
+        function openDB(){return new Promise((res,rej)=>{const r=indexedDB.open(DB,1);r.onupgradeneeded=e=>{const d=e.target.result;['machines','shifts'].forEach(s=>{if(!d.objectStoreNames.contains(s))d.createObjectStore(s,{keyPath:'id',autoIncrement:true});});};r.onsuccess=e=>{db=e.target.result;res();};r.onerror=rej;});}
+        function getAll(s){return new Promise(r=>{db.transaction(s,'readonly').objectStore(s).getAll().onsuccess=e=>r(e.target.result||[]);});}
+        function addItem(s,i){return new Promise(r=>{db.transaction(s,'readwrite').objectStore(s).add(i).onsuccess=e=>r(e.target.result);});}
+        function countS(s){return new Promise(r=>{db.transaction(s,'readonly').objectStore(s).count().onsuccess=e=>r(e.target.result);});}
+        function clearS(s){return new Promise(r=>{db.transaction(s,'readwrite').objectStore(s).clear();setTimeout(r,50);});}
+        function delItem(s,id){return new Promise(r=>{db.transaction(s,'readwrite').objectStore(s).delete(id);setTimeout(r,50);});}
+        
+        function notif(m,t='success'){const n=document.getElementById('notification');document.getElementById('notifText').textContent=m;n.className=`notification ${t} show`;setTimeout(()=>n.classList.remove('show'),3000);}
+        function fmt(n){return (n||0).toFixed(1);}
+        function getToday(){return new Date().toISOString().split('T')[0];}
+        
+        function closeModal(){document.getElementById('machineModal').style.display='none';}
+        function openMachineModal(){document.getElementById('machineModal').style.display='flex';}
+        
+        async function loadAll(){const m=await getAll('machines'),s=await getAll('shifts');document.getElementById('totalMachines').textContent=m.length;document.getElementById('totalShifts').textContent=s.length;document.getElementById('avgOEE').textContent=s.length?(s.reduce((a,b)=>a+(b.oee||0),0)/s.length).toFixed(1)+'%':'0%';renderStats(s);renderMachines(m,s);renderTopOEE(m,s);populateSelects(m);renderHistory(m,s);updateLoss(s);updateCharts(m,s);}
+        
+        function renderStats(shifts){
+            if(!shifts.length){document.getElementById('statsGrid').innerHTML='<div class="stat-card availability"><div class="stat-title">Availability</div><div class="stat-value">0%</div></div><div class="stat-card performance"><div class="stat-title">Performance</div><div class="stat-value">0%</div></div><div class="stat-card quality"><div class="stat-title">Quality</div><div class="stat-value">0%</div></div><div class="stat-card oee"><div class="stat-title">OEE</div><div class="stat-value">0%</div></div>';return;}
+            let a=0,p=0,q=0,o=0;shifts.forEach(s=>{a+=s.availability||0;p+=s.performance||0;q+=s.quality||0;o+=s.oee||0;});const c=shifts.length;
+            document.getElementById('statsGrid').innerHTML=`<div class="stat-card availability"><div class="stat-title">Availability</div><div class="stat-value">${fmt(a/c)}%</div></div><div class="stat-card performance"><div class="stat-title">Performance</div><div class="stat-value">${fmt(p/c)}%</div></div><div class="stat-card quality"><div class="stat-title">Quality</div><div class="stat-value">${fmt(q/c)}%</div></div><div class="stat-card oee"><div class="stat-title">OEE</div><div class="stat-value">${fmt(o/c)}%</div></div>`;
         }
-
-        function getOeeCategory(oee) {
-            if (oee >= 85) return 'excellent'; if (oee >= 75) return 'good';
-            if (oee >= 65) return 'average'; return 'poor';
+        
+        function renderMachines(machines,shifts){
+            const c=document.getElementById('machinesList');
+            c.innerHTML=machines.length?machines.map(m=>{const ms=shifts.filter(s=>s.machineId===m.id);const avg=ms.length?ms.reduce((a,b)=>a+(b.oee||0),0)/ms.length:0;return`<div style="background:white;padding:12px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;"><div><strong>${m.name}</strong> (${m.code})<br><small>${m.department} • ${m.type} | Avg OEE: ${fmt(avg)}%</small></div><button class="btn btn-danger btn-xs" onclick="delMachine(${m.id})">🗑️</button></div>`;}).join(''):'<div class="empty-state">No machines</div>';
         }
-
-        async function getCount(store) {
-            return new Promise(r => db.transaction([store],'readonly').objectStore(store).count().onsuccess = e => r(e.target.result));
+        
+        function renderTopOEE(machines,shifts){
+            const today=getToday(),ts=shifts.filter(s=>s.date===today).sort((a,b)=>(b.oee||0)-(a.oee||0));
+            const c=document.getElementById('topOEE');
+            c.innerHTML=ts.length?ts.slice(0,3).map(s=>{const m=machines.find(x=>x.id===s.machineId);return`<div class="loss-item"><div><strong>${m?m.name:'?'}</strong><br><small>${s.shiftType}</small></div><strong>${fmt(s.oee||0)}%</strong></div>`;}).join(''):'<div class="empty-state" style="padding:20px;"><p>No data today</p></div>';
         }
-        async function getAll(store) {
-            return new Promise(r => db.transaction([store],'readonly').objectStore(store).getAll().onsuccess = e => r(e.target.result));
+        
+        function populateSelects(machines){
+            ['calcMachine','shiftMachine'].forEach(id=>{const s=document.getElementById(id);if(s)s.innerHTML='<option value="">Select...</option>'+machines.map(m=>`<option value="${m.id}">${m.name} (${m.code})</option>`).join('');});
+            document.getElementById('shiftDate').value=getToday();
         }
-
-        function initApp() {
-            document.getElementById('shift-date').value = new Date().toISOString().split('T')[0];
-            loadStats(); loadMachines(); populateSelects(); loadReports(); loadTopOEE();
+        
+        function renderHistory(machines,shifts){
+            document.getElementById('shiftsTableBody')&&(document.getElementById('shiftsTableBody').innerHTML=[...shifts].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,10).map(s=>{const m=machines.find(x=>x.id===s.machineId);return`<tr><td>${s.date}</td><td>${m?m.name:'?'}</td><td>${s.shiftType}</td><td>${fmt(s.oee||0)}%</td><td>${s.totalParts||0}</td><td>${s.defectiveParts||0}</td></tr>`;}).join('')||'<tr><td colspan="6">No shifts</td></tr>');
         }
-
-        function loadStats() {
-            getAll('shifts').then(shifts => {
-                document.getElementById('totalShifts').textContent = shifts.length;
-                if (shifts.length === 0) {
-                    document.getElementById('avgOEE').textContent = '0%';
-                    ['statAvailability','statPerformance','statQuality','statOEE'].forEach(id => document.getElementById(id).textContent = '0%');
-                    return;
-                }
-                let a=0,p=0,q=0,o=0;
-                shifts.forEach(s => { a+=s.availability||0; p+=s.performance||0; q+=s.quality||0; o+=s.oee||0; });
-                const c = shifts.length;
-                document.getElementById('statAvailability').textContent = (a/c).toFixed(1)+'%';
-                document.getElementById('statPerformance').textContent = (p/c).toFixed(1)+'%';
-                document.getElementById('statQuality').textContent = (q/c).toFixed(1)+'%';
-                document.getElementById('statOEE').textContent = (o/c).toFixed(1)+'%';
-                document.getElementById('avgOEE').textContent = (o/c).toFixed(1)+'%';
-            });
+        
+        function updateLoss(shifts){
+            if(!shifts.length)return;
+            let a=0,p=0,q=0;shifts.forEach(s=>{a+=s.availability||0;p+=s.performance||0;q+=s.quality||0;});
+            const c=shifts.length;document.getElementById('aLoss').textContent=Math.max(0,100-a/c).toFixed(1)+'%';document.getElementById('pLoss').textContent=Math.max(0,100-p/c).toFixed(1)+'%';document.getElementById('qLoss').textContent=Math.max(0,100-q/c).toFixed(1)+'%';
         }
-
-        function loadMachines() {
-            getAll('machines').then(machines => {
-                const list = document.getElementById('machinesList');
-                if (machines.length === 0) { list.innerHTML = '<div class="empty-state"><i class="fas fa-cogs"></i><p>No machines yet</p></div>'; return; }
-                list.innerHTML = machines.map(m => `
-                    <div style="background:white;padding:12px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
-                        <div><strong>${m.name}</strong> (${m.code})<br><small style="color:var(--gray)">${m.department} • ${m.type}</small></div>
-                        <button class="btn btn-danger btn-xs" onclick="deleteMachine(${m.id})"><i class="fas fa-trash"></i></button>
-                    </div>`).join('');
-            });
+        
+        function updateCharts(machines,shifts){
+            const tCtx=document.getElementById('oeeTrend')?.getContext('2d'),mCtx=document.getElementById('oeeByMachine')?.getContext('2d'),lCtx=document.getElementById('lossChart')?.getContext('2d');
+            if(charts.trend)charts.trend.destroy();if(charts.machine)charts.machine.destroy();if(charts.loss)charts.loss.destroy();
+            if(!shifts.length)return;
+            if(tCtx){const d=[];for(let i=6;i>=0;i--){const dt=new Date();dt.setDate(dt.getDate()-i);d.push({date:dt.toISOString().split('T')[0],oee:0,c:0});}shifts.forEach(s=>{const day=d.find(x=>x.date===s.date);if(day){day.oee+=s.oee||0;day.c++;}});charts.trend=new Chart(tCtx,{type:'line',data:{labels:d.map(x=>x.date.slice(5)),datasets:[{label:'OEE %',data:d.map(x=>x.c?x.oee/x.c:0),borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,0.1)',fill:true}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{max:100}}}});}
+            if(mCtx){const d={};machines.forEach(m=>{const ms=shifts.filter(s=>s.machineId===m.id);if(ms.length)d[m.name]=ms.reduce((a,b)=>a+(b.oee||0),0)/ms.length;});charts.machine=new Chart(mCtx,{type:'bar',data:{labels:Object.keys(d),datasets:[{label:'OEE %',data:Object.values(d),backgroundColor:Object.values(d).map(v=>v>=85?'#10b981':v>=65?'#f59e0b':'#ef4444')}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{max:100}}}});}
         }
-
-        function populateSelects() {
-            getAll('machines').then(machines => {
-                ['calc-machine','shift-machine'].forEach(id => {
-                    const sel = document.getElementById(id); if(!sel) return;
-                    sel.innerHTML = '<option value="">Select...</option>' + machines.map(m => `<option value="${m.id}">${m.name} (${m.code})</option>`).join('');
-                });
-            });
+        
+        function calcOEE(){
+            const ts=parseFloat(document.getElementById('totalShiftTime').value)||480,pd=parseFloat(document.getElementById('plannedDowntime').value)||0,ud=parseFloat(document.getElementById('unplannedDowntime').value)||0,tp=parseFloat(document.getElementById('totalProduced').value)||0,dp=parseFloat(document.getElementById('defectiveParts').value)||0,ict=parseFloat(document.getElementById('idealCycle').value)||0;
+            const at=ts-pd,ot=at-ud,av=(ot/at)*100||0,gp=tp-dp,ipt=(gp*ict)/60,apt=(gp*ict*1.25)/60,perf=apt>0?(ipt/apt)*100:0,qual=tp>0?(gp/tp)*100:0,oee=(av*perf*qual)/10000;
+            document.getElementById('oeeResult').style.display='block';
+            const sc=document.getElementById('oeeScore');sc.textContent=fmt(oee)+'%';sc.className='oee-score '+(oee>=85?'excellent':oee>=75?'good':oee>=65?'average':'poor');
+            document.getElementById('availabilityScore').textContent=fmt(av)+'%';document.getElementById('performanceScore').textContent=fmt(perf)+'%';document.getElementById('qualityScore').textContent=fmt(qual)+'%';
+            document.getElementById('saveBtn').style.display='inline-flex';
+            calcResult={machineId:parseInt(document.getElementById('calcMachine').value),date:getToday(),shiftType:document.getElementById('calcShift').value,totalTime:ts,availableTime:at,operatingTime:ot,totalParts:tp,defectiveParts:dp,goodParts:gp,availability:av,performance:perf,quality:qual,oee};
         }
-
-        function loadReports() {
-            getAll('shifts').then(shifts => {
-                const trendCtx = document.getElementById('oeeTrendChart')?.getContext('2d');
-                const machineCtx = document.getElementById('oeeByMachineChart')?.getContext('2d');
-                if (!trendCtx && !machineCtx) return;
-
-                if (charts.oeeTrend) charts.oeeTrend.destroy();
-                if (charts.oeeByMachine) charts.oeeByMachine.destroy();
-
-                if (shifts.length === 0) return;
-
-                // Trend
-                const last7 = []; for(let i=6;i>=0;i--) { const d=new Date(); d.setDate(d.getDate()-i); last7.push({date:d.toISOString().split('T')[0],oee:0,count:0}); }
-                shifts.forEach(s => { const day = last7.find(d=>d.date===s.date); if(day){day.oee+=s.oee||0;day.count++;} });
-                if (trendCtx) {
-                    charts.oeeTrend = new Chart(trendCtx, {
-                        type:'line', data:{ labels:last7.map(d=>d.date.slice(5)), datasets:[{ label:'OEE %', data:last7.map(d=>d.count>0?d.oee/d.count:0), borderColor:'#2563eb', backgroundColor:'rgba(37,99,235,0.1)', fill:true, tension:0.3 }] },
-                        options:{ responsive:true, maintainAspectRatio:false, scales:{ y:{ beginAtZero:true, max:100 } } }
-                    });
-                }
-
-                // By Machine
-                getAll('machines').then(machines => {
-                    if (!machineCtx) return;
-                    const data = {}; machines.forEach(m => { const ms = shifts.filter(s=>s.machineId===m.id); if(ms.length>0) data[m.name] = ms.reduce((a,b)=>a+(b.oee||0),0)/ms.length; });
-                    charts.oeeByMachine = new Chart(machineCtx, {
-                        type:'bar', data:{ labels:Object.keys(data), datasets:[{ label:'Avg OEE %', data:Object.values(data), backgroundColor:Object.values(data).map(v=>v>=85?'#10b981':v>=65?'#f59e0b':'#ef4444') }] },
-                        options:{ responsive:true, maintainAspectRatio:false, scales:{ y:{ beginAtZero:true, max:100 } } }
-                    });
-                });
-            });
+        
+        async function saveResult(){
+            if(!calcResult||!calcResult.machineId)return notif('Select a machine','warning');
+            const cnt=await countS('shifts');if(cnt>=DEMO.shifts)return notif(`Demo: ${DEMO.shifts} shifts max`,'warning');
+            await addItem('shifts',calcResult);notif('Saved!');document.getElementById('saveBtn').style.display='none';loadAll();
         }
-
-        function loadTopOEE() {
-            getAll('shifts').then(shifts => {
-                const today = new Date().toISOString().split('T')[0];
-                const todayShifts = shifts.filter(s=>s.date===today).sort((a,b)=>(b.oee||0)-(a.oee||0));
-                const list = document.getElementById('topOeeToday');
-                if (todayShifts.length===0) { list.innerHTML='<div class="empty-state"><p>No data for today</p></div>'; return; }
-                getAll('machines').then(machines => {
-                    list.innerHTML = todayShifts.slice(0,3).map(s => {
-                        const m = machines.find(x=>x.id===s.machineId);
-                        return `<div class="loss-item"><div class="loss-info"><h4>${m?m.name:'Unknown'}</h4><p>${s.shiftType}</p></div><div class="loss-value">${(s.oee||0).toFixed(1)}%</div></div>`;
-                    }).join('');
-                });
-            });
+        
+        async function saveMachine(){
+            const cnt=await countS('machines');if(cnt>=DEMO.machines)return notif(`Demo: ${DEMO.machines} machines max`,'warning');
+            const m={code:document.getElementById('mCode').value,name:document.getElementById('mName').value,department:document.getElementById('mDept').value,type:document.getElementById('mType').value,status:'active'};
+            if(!m.code||!m.name)return notif('Fill fields','error');
+            await addItem('machines',m);closeModal();loadAll();notif('Machine added!');
         }
-
-        function calculateOEE() {
-            const ts = parseFloat(document.getElementById('total-shift-time').value)||480;
-            const pd = parseFloat(document.getElementById('planned-downtime').value)||0;
-            const ud = parseFloat(document.getElementById('unplanned-downtime').value)||0;
-            const rs = parseFloat(document.getElementById('reduced-speed-time').value)||0;
-            const tp = parseFloat(document.getElementById('total-produced').value)||0;
-            const dp = parseFloat(document.getElementById('defective-parts').value)||0;
-            const ict = parseFloat(document.getElementById('ideal-cycle-time').value)||0;
-            const act = parseFloat(document.getElementById('actual-cycle-time').value)||0;
-
-            const at = ts - pd;
-            const ot = at - ud;
-            const av = (ot/at)*100 || 0;
-            const gp = tp - dp;
-            const ipt = (gp*ict)/60;
-            const apt = (gp*act)/60;
-            let perf = apt>0 ? (ipt/apt)*100 : 0;
-            perf = Math.max(0, perf - (rs/ot)*100 || 0);
-            const qual = tp>0 ? (gp/tp)*100 : 0;
-            const oee = (av*perf*qual)/10000;
-
-            document.getElementById('oeeResult').style.display = 'block';
-            const scoreEl = document.getElementById('oeeScore');
-            scoreEl.textContent = oee.toFixed(1)+'%';
-            scoreEl.className = 'oee-score '+getOeeCategory(oee);
-            document.getElementById('availabilityScore').textContent = av.toFixed(1)+'%';
-            document.getElementById('performanceScore').textContent = perf.toFixed(1)+'%';
-            document.getElementById('qualityScore').textContent = qual.toFixed(1)+'%';
-            document.getElementById('saveShiftBtn').style.display = 'inline-flex';
-            return { availability:av, performance:perf, quality:qual, oee, totalParts:tp, defectiveParts:dp, goodParts:gp };
+        
+        async function delMachine(id){if(!confirm('Delete?'))return;await delItem('machines',id);loadAll();}
+        
+        document.getElementById('shiftForm').addEventListener('submit',async function(e){
+            e.preventDefault();const cnt=await countS('shifts');if(cnt>=DEMO.shifts)return notif(`Demo: ${DEMO.shifts} shifts max`,'warning');
+            const tt=parseFloat(document.getElementById('sTotalTime').value)||480,dt=parseFloat(document.getElementById('sDowntime').value)||0,at=tt-dt,tp=parseFloat(document.getElementById('sParts').value)||0,dp=parseFloat(document.getElementById('sDefects').value)||0,gp=tp-dp,av=tt>0?(at/tt)*100:0,qual=tp>0?(gp/tp)*100:0,perf=90,oee=(av*perf*qual)/10000;
+            await addItem('shifts',{machineId:parseInt(document.getElementById('shiftMachine').value),date:document.getElementById('shiftDate').value,shiftType:document.getElementById('shiftType').value,totalTime:tt,availableTime:at,operatingTime:at,totalParts:tp,defectiveParts:dp,goodParts:gp,availability:av,performance:perf,quality:qual,oee});
+            this.reset();document.getElementById('shiftDate').value=getToday();loadAll();notif('Shift saved!');
+        });
+        
+        async function loadSample(){
+            const ms=[{code:'CNC-001',name:'5-Axis CNC',department:'cnc',type:'cnc',status:'active'},{code:'INJ-001',name:'Injection Molder',department:'injection',type:'injection',status:'active'},{code:'PKG-001',name:'Packaging Line',department:'packaging',type:'packaging',status:'active'},{code:'ASM-001',name:'Assembly Line',department:'assembly',type:'assembly',status:'active'},{code:'LTH-001',name:'CNC Lathe',department:'cnc',type:'lathe',status:'active'}];
+            const ss=[];for(let i=3;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const ds=d.toISOString().split('T')[0];ms.forEach((m,idx)=>{ss.push({machineId:idx+1,date:ds,shiftType:'morning',totalTime:480,availableTime:420,operatingTime:390,totalParts:300+Math.floor(Math.random()*200),defectiveParts:Math.floor(Math.random()*30),goodParts:0,availability:92.8,performance:88.5,quality:95.2,oee:78+Math.random()*15});});}
+            ss.forEach(s=>s.goodParts=s.totalParts-s.defectiveParts);
+            await clearS('machines');await clearS('shifts');
+            for(let m of ms)await addItem('machines',m);
+            for(let s of ss.slice(0,DEMO.shifts))await addItem('shifts',s);
+            loadAll();notif('Sample data loaded!');
         }
-
-        // Event Listeners
-        document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', function(){
-            document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
-            this.classList.add('active');
-            const target = document.getElementById(this.dataset.tab+'-tab');
-            if(target) target.classList.add('active');
-            if(this.dataset.tab==='reports') loadReports();
-            if(this.dataset.tab==='machines') loadMachines();
+        
+        async function clearAll(){if(!confirm('Delete ALL?'))return;await clearS('machines');await clearS('shifts');loadAll();notif('Cleared');}
+        
+        document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',function(){
+            document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
+            this.classList.add('active');document.getElementById(this.dataset.tab+'-tab').classList.add('active');
+            if(this.dataset.tab==='reports'||this.dataset.tab==='losses')loadAll();
         }));
-
-        document.getElementById('calculateBtn').addEventListener('click', calculateOEE);
-
-        document.getElementById('saveShiftBtn').addEventListener('click', async () => {
-            const count = await getCount('shifts');
-            if (count >= DEMO_LIMITS.shifts) { showNotification(`Demo limit: ${DEMO_LIMITS.shifts} shifts max. Upgrade for unlimited.`,'warning'); return; }
-            const machineId = parseInt(document.getElementById('calc-machine').value);
-            if (!machineId) { showNotification('Select a machine','warning'); return; }
-            const calc = calculateOEE();
-            const shift = {
-                machineId, date: new Date().toISOString().split('T')[0],
-                shiftType: document.getElementById('calc-shift').value,
-                totalTime: parseFloat(document.getElementById('total-shift-time').value)||480,
-                availableTime: (parseFloat(document.getElementById('total-shift-time').value)||480) - (parseFloat(document.getElementById('planned-downtime').value)||0),
-                operatingTime: (parseFloat(document.getElementById('total-shift-time').value)||480) - (parseFloat(document.getElementById('planned-downtime').value)||0) - (parseFloat(document.getElementById('unplanned-downtime').value)||0),
-                totalParts: calc.totalParts, defectiveParts: calc.defectiveParts, goodParts: calc.goodParts,
-                availability: calc.availability, performance: calc.performance, quality: calc.quality, oee: calc.oee,
-                notes:'', createdAt: new Date().toISOString()
-            };
-            db.transaction(['shifts'],'readwrite').objectStore('shifts').add(shift).onsuccess = () => {
-                showNotification('Shift saved!','success'); initApp();
-            };
-        });
-
-        document.getElementById('shiftForm').addEventListener('submit', async function(e){
-            e.preventDefault();
-            const count = await getCount('shifts');
-            if (count >= DEMO_LIMITS.shifts) { showNotification(`Demo limit: ${DEMO_LIMITS.shifts} shifts max.`,'warning'); return; }
-            const tt = parseFloat(document.getElementById('shift-total').value)||480;
-            const dt = parseFloat(document.getElementById('shift-downtime').value)||0;
-            const at = tt - dt;
-            const tp = parseFloat(document.getElementById('shift-parts').value)||0;
-            const dp = parseFloat(document.getElementById('shift-defects').value)||0;
-            const gp = tp - dp;
-            const av = tt>0?(at/tt)*100:0;
-            const qual = tp>0?(gp/tp)*100:0;
-            const perf = 90;
-            const oee = (av*perf*qual)/10000;
-
-            const shift = {
-                machineId: parseInt(document.getElementById('shift-machine').value),
-                date: document.getElementById('shift-date').value,
-                shiftType: document.getElementById('shift-type').value,
-                operator: document.getElementById('shift-operator').value,
-                totalTime: tt, availableTime: at, operatingTime: at,
-                totalParts: tp, defectiveParts: dp, goodParts: gp,
-                availability: av, performance: perf, quality: qual, oee,
-                notes:'', createdAt: new Date().toISOString()
-            };
-            db.transaction(['shifts'],'readwrite').objectStore('shifts').add(shift).onsuccess = () => {
-                showNotification('Shift logged!','success');
-                this.reset(); document.getElementById('shift-date').value = new Date().toISOString().split('T')[0];
-                initApp();
-            };
-        });
-
-        document.getElementById('addMachineBtn').addEventListener('click', async () => {
-            const count = await getCount('machines');
-            if (count >= DEMO_LIMITS.machines) { showNotification(`Demo limit: ${DEMO_LIMITS.machines} machines max. Upgrade for unlimited.`,'warning'); return; }
-            const code = prompt('Machine Code (e.g. CNC-001):');
-            if (!code) return;
-            const name = prompt('Machine Name:');
-            if (!name) return;
-            const machine = { code, name, department:'production', type:'cnc', status:'active', createdAt: new Date().toISOString() };
-            db.transaction(['machines'],'readwrite').objectStore('machines').add(machine).onsuccess = () => {
-                showNotification('Machine added!','success'); initApp();
-            };
-        });
-
-        document.getElementById('loadSampleBtn').addEventListener('click', async () => {
-            const mCount = await getCount('machines');
-            if (mCount > 0 && !confirm('Data exists. Add sample data anyway?')) return;
-            const machines = [
-                { code:'CNC-001', name:'5-Axis CNC', department:'cnc', type:'cnc', status:'active', createdAt: new Date().toISOString() },
-                { code:'INJ-001', name:'Injection Molder', department:'injection', type:'injection', status:'active', createdAt: new Date().toISOString() },
-                { code:'PKG-001', name:'Packaging Line', department:'packaging', type:'packaging', status:'active', createdAt: new Date().toISOString() }
-            ];
-            const shifts = [];
-            for(let i=3;i>=0;i--){
-                const d=new Date(); d.setDate(d.getDate()-i); const ds=d.toISOString().split('T')[0];
-                machines.forEach((m,idx) => {
-                    shifts.push({
-                        machineId: idx+1+mCount, date:ds, shiftType:'morning', operator:'Demo Operator',
-                        totalTime:480, availableTime:420, operatingTime:390,
-                        totalParts:300+Math.floor(Math.random()*200), defectiveParts:Math.floor(Math.random()*30),
-                        goodParts:0, availability:92.8, performance:88.5, quality:95.2,
-                        oee:78+Math.random()*15, notes:'', createdAt: new Date().toISOString()
-                    });
-                });
-            }
-            for(const m of machines) {
-                await new Promise(r => db.transaction(['machines'],'readwrite').objectStore('machines').add(m).onsuccess=r);
-            }
-            for(const s of shifts.slice(0, DEMO_LIMITS.shifts)) {
-                s.goodParts = s.totalParts - s.defectiveParts;
-                await new Promise(r => db.transaction(['shifts'],'readwrite').objectStore('shifts').add(s).onsuccess=r);
-            }
-            document.getElementById('sampleStatus').innerHTML = '<span style="color:var(--success)">✅ Sample data loaded!</span>';
-            showNotification('Sample data loaded!','success'); initApp();
-        });
-
-        document.getElementById('clearSampleBtn').addEventListener('click', () => {
-            if (!confirm('Delete ALL data?')) return;
-            Promise.all(['machines','shifts'].map(s => new Promise(r => db.transaction([s],'readwrite').objectStore(s).clear().onsuccess=r)))
-                .then(() => { showNotification('All data cleared','success'); initApp(); });
-        });
-
-        window.deleteMachine = function(id) {
-            if (!confirm('Delete this machine?')) return;
-            db.transaction(['machines'],'readwrite').objectStore('machines').delete(id).onsuccess = () => { showNotification('Deleted','success'); initApp(); };
-        };
-
-        // Disable right-click
-        document.addEventListener('contextmenu', e => { e.preventDefault(); alert('⛔ Demo version. Purchase at digitalyar.company'); });
-        document.addEventListener('keydown', e => {
-            if ((e.ctrlKey && e.key==='s') || (e.ctrlKey && e.key==='u') || (e.ctrlKey && e.shiftKey && e.key==='i') || e.key==='F12') { e.preventDefault(); }
-        });
+        
+        window.addEventListener('DOMContentLoaded',async()=>{await openDB();await loadSample();});
+        document.addEventListener('contextmenu',e=>{e.preventDefault();alert('⛔ Demo version. Purchase at digitalyar.company');});
     </script>
 </body>
 </html>
